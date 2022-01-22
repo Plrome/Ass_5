@@ -106,7 +106,7 @@ public class RookiesController : Controller
     // public IActionResult Index(){
     //     return View(persons);
     // }
-    [Route("NashTech/rookies/male")]
+    
     public IActionResult GetMaleMembers(){
         var result = from person in persons
                     where person.Gender == "Male"
@@ -115,20 +115,20 @@ public class RookiesController : Controller
         return Json(result);
     }
 
-    [Route("NashTech/rookies/oldest")]
+    
     public IActionResult GetOldestMember(){
         var maxAge = persons.Max(m => m.Age);
         var oldest = persons.First(m =>m.Age == maxAge);
         return new ObjectResult(oldest);
     }
 
-    [Route("NashTech/rookies/full-names")]
+    
     public IActionResult GetFullNames(){
         var fullnames = persons.Select(m => m.FullName);
         return new ObjectResult(fullnames);
     }
 
-    [Route("NashTech/rookies/split-members-by-year")]
+    
     public IActionResult SplitMemberByYear(int year){
         var results = from person in persons
                     group person by person.DateOfBirth.Year.CompareTo(year) into grp
@@ -146,7 +146,7 @@ public class RookiesController : Controller
         return Json(results);
     }
 
-    [Route("NashTech/rookies/export")]
+    
     public IActionResult Export()
     {
         var buffer = WriteCsvToMemory(persons); 
