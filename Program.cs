@@ -23,5 +23,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "rookies",
+    pattern: "NashTech/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
